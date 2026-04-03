@@ -34,7 +34,7 @@ class _Page1State extends State<Page1> {
       email: email,
       password: password,
     );
-    HiveDbService.saveObject(objKey: "user", obj: user);
+    HiveDbService.saveObject(objKey: "user", obj: user.toJson());
     firstNameController.clear();
     lastNameController.clear();
     emailController.clear();

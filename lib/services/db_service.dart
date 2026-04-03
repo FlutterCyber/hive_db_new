@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:hive/hive.dart';
 import 'package:internationalization/models/user_model.dart';
 
+import '../models/user_model.dart';
+
 class HiveDbService {
   static var box = Hive.box("userData");
 
@@ -32,6 +34,7 @@ class HiveDbService {
     try {
       box.delete("email");
       box.delete("password");
+      print("Succesfully deleted");
     } catch (e) {
       print(e);
     }
@@ -40,6 +43,8 @@ class HiveDbService {
   static saveObject({required String objKey, required var obj}) {
     try {
       String objString = jsonEncode(obj);
+      print("****************");
+      print(objString);
       box.put(objKey, objString);
       print("Object saved Successfully");
     } catch (e) {
